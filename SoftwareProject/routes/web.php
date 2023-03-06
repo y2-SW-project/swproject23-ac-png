@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\User\ProductController as UserProductController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +23,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('/products', ProductController::class)->middleware(['auth']);
+
+Route::resource('/admin/products', AdminProductController::class)->middleware(['auth'])->names('admin.products');
+Route::resource('/user/products', UserProductController::class)->middleware(['auth'])->names('user.products')->only(['index', 'show']);

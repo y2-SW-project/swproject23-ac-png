@@ -41,4 +41,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles()
+    {
+        // Many-to-many relationship between User and Role.
+        return $this->belongsToMany('App\Models\Role', 'user_role');
+    }
+
+
+    public function authorizeRoles($roles)
+    {
+        // Determine if the user has the role, if not it will be  unauthorzed.
+        if (is_array($roles)) {
+            return $this->hasAnyRole($roles) ||
+                abort(401, 'This action is unauthorzed');
+        }
+        return $this->hasRole($roles) ||
+            abort(401, 'This action is unauthorized');
+    }
+
+    // Checks if the user has a specific role.
+    public function hasRole($role)
+    {
+        return null !== $this->roles()->where('name', $role)->first();
+    }
+
+    // Checks if the user has any of the given roles.
+    public function hasAnyRole($roles)
+    {
+        return null !== $this->roles()->whereIn('name', $roles)->first();
+    }
 }
