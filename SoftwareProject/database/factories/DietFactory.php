@@ -17,8 +17,11 @@ class DietFactory extends Factory
     public function definition(): array
     {
         return [
+            'uuid' => $this->faker->uuid(),
             'name' => $this->faker->word,
-            'description' => $this->faker->text(50)
+            'description' => $this->faker->text(50),
+            'created_at' => $this->faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
+            'updated_at' => $this->faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now')
         ];
     }
 }

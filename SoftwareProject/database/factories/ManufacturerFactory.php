@@ -17,10 +17,13 @@ class ManufacturerFactory extends Factory
     public function definition(): array
     {
         return [
+            'uuid' => $this->faker->uuid(),
             'name' => $this->faker->word,
             'address' => $this->faker->address(),
             'email' => $this->faker->email(),
-            'phone_number' => $this->faker->phoneNumber()
+            'phone_number' => $this->faker->phoneNumber(),
+            'created_at' => $this->faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
+            'updated_at' => $this->faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now')
         ];
     }
 }
