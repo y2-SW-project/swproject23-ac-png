@@ -18,7 +18,7 @@ class DietFactory extends Factory
     {
         return [
             'uuid' => $this->faker->uuid(),
-            'name' => $this->faker->word,
+            'name' => $this->faker->word(),
             'description' => $this->faker->text(50),
             'created_at' => $this->faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
             'updated_at' => $this->faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now')

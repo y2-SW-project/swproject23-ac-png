@@ -18,7 +18,7 @@ class ManufacturerFactory extends Factory
     {
         return [
             'uuid' => $this->faker->uuid(),
-            'name' => $this->faker->word,
+            'name' => $this->faker->company(),
             'address' => $this->faker->address(),
             'email' => $this->faker->email(),
             'phone_number' => $this->faker->phoneNumber(),
