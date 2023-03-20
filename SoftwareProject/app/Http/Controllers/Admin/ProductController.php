@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +14,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        // Authorizes admin role.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        $products = Product::latest('updated_at')->get();
+        // dd($products);
+
+        // Returns to the page with all the products.
+        return view('admin.products.index')->with('products', $products);
     }
 
     /**
