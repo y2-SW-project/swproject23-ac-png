@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->word(),
             'description' => $this->faker->text(50),
             // 'diet' => $this->faker->word,
-            'price' => $this->faker->randomDigit(),
+            'price' => $this->faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 100),
             'created_at' => $this->faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
             'updated_at' => $this->faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now')
         ];

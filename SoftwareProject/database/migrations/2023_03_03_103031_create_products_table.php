@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             // $table->text('diet');
-            $table->integer('price');
+            $table->float('price');
             $table->timestamps();
         });
     }
