@@ -16,7 +16,7 @@ class DietSeeder extends Seeder
     public function run()
     {
         Diet::factory()
-            ->times(3)
+            ->times(10)
             ->create();
 
         foreach (Product::all() as $product) {
