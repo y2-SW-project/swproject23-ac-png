@@ -20,7 +20,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="#">DietOnline</a>
+                <a class="navbar-brand" href="/">DietOnline</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -31,13 +31,7 @@
                     <ul class="navbar-nav me-auto">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Products</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Diets</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Recipes</a>
+                                <a class="nav-link" href="{{ route('home.index') }}">{{ __('Products') }}</a>
                             </li>
                         </ul>
                     </ul>

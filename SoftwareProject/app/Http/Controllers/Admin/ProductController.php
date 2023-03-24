@@ -18,7 +18,7 @@ class ProductController extends Controller
         $admin = Auth::user();
         $admin->authorizeRoles('admin');
 
-        $products = Product::latest('updated_at')->get();
+        $products = Product::latest('updated_at')->paginate(12);
         // dd($products);
 
         // Returns to the page with all the products.
@@ -30,7 +30,12 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        // Authorizes admin roles.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        // Shows the form for creating a new products (with the hospitals and veterinarians).
+        return view('admin.products.create');
     }
 
     /**
@@ -44,9 +49,22 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($uuid)
     {
-        //
+        // Authorizes admin role.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        // If the id of the admin does not match the note's admin_id, returns a error screen.
+        if (!Auth::id()) {
+            return abort(403);
+        }
+
+        // Finds an product by uuid.
+        $product = Product::where('uuid', $uuid)->firstOrFail();
+
+        // Returns to the page with all the products.
+        return view('admin.products.show')->with('product', $product);
     }
 
     /**
@@ -54,7 +72,12 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Authorizes admin roles.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        // Shows the form for creating a new products (with the hospitals and veterinarians).
+        return view('admin.products.edit');
     }
 
     /**

@@ -19,7 +19,7 @@ class ProductFactory extends Factory
         return [
             'uuid' => $this->faker->uuid(),
             'name' => $this->faker->word(),
-            'description' => $this->faker->text(50),
+            'description' => $this->faker->text(1000),
             // 'diet' => $this->faker->word,
             'price' => $this->faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 100),
             'image' => $this->faker->image(),
