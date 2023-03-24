@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Manufacturer;
+use App\Models\Diet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -34,8 +36,10 @@ class ProductController extends Controller
         $admin = Auth::user();
         $admin->authorizeRoles('admin');
 
-        // Shows the form for creating a new products (with the hospitals and veterinarians).
-        return view('admin.products.create');
+        $manufacturers = Manufacturer::all();
+        $diets = Diet::all();
+
+        return view('admin.products.create')->with('manufacturers', $manufacturers)->with('diets', $diets);
     }
 
     /**
@@ -76,7 +80,7 @@ class ProductController extends Controller
         $admin = Auth::user();
         $admin->authorizeRoles('admin');
 
-        // Shows the form for creating a new products (with the hospitals and veterinarians).
+        // Shows the form for creating a new products (with the manufactuers and veterinarians).
         return view('admin.products.edit');
     }
 

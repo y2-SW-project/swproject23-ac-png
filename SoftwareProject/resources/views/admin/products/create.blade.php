@@ -22,19 +22,25 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Diet</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Diet
-                    </label>
-                </div>
+                    @foreach ($diets as $diet)
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                {{ $diet->name }}
+                            </label>
+                        </div>
+                    @endforeach
+                
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Manufacturer</label>
                 <select class="mb-3 form-select" aria-label="Default select example">
-                    <option selected>Manufacturer</option>
+                    @foreach ($manufacturers as $manufacturer)
+                        <option selected>{{ $manufacturer->name }}</option>
+                    @endforeach
                 </select>
             </div>
+            <label for="exampleInputEmail1" class="form-label">Image</label>
             <div class="input-group mb-3">
                 <input type="file" class="form-control" id="inputGroupFile02">
             </div>

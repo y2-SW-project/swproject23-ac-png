@@ -16,9 +16,7 @@ return new class extends Migration
             $table->uuid('uuid');
             $table->string('name');
             $table->text('description');
-            // $table->text('diet');
             $table->float('price');
-            $table->string('image');
             $table->timestamps();
         });
     }

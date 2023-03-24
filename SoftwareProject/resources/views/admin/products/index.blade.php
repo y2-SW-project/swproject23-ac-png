@@ -3,6 +3,7 @@
 @section('content')
 
     <div class="container-fluid px-5">
+        <h1 class="text-center">Products</h1>
         <a href="{{ route('admin.products.create') }}" class="btn btn btn-success my-3">Add Product</a>
         <div class="row">
             @forelse ($products as $product)
