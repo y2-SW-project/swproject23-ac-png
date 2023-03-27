@@ -28,7 +28,7 @@
             </div>
             <div class="mb-3">
                 <input
-                type="text"
+                type="email"
                 name="email"
                 field="email"
                 placeholder="Email"

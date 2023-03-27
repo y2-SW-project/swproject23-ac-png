@@ -48,12 +48,6 @@ class DietController extends Controller
         $admin = Auth::user();
         $admin->authorizeRoles('admin');
 
-        // Validates if the request is valid.
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required|max:1000'
-        ]);
-
         // Create a new diet.
         Diet::create([
             'uuid' => Str::uuid(),

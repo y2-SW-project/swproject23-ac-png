@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Manufacturer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ManufacturerController extends Controller
 {
@@ -30,7 +31,12 @@ class ManufacturerController extends Controller
      */
     public function create()
     {
-        //
+        // Authorizes admin role.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        // Returns to the page with all the manufacturers.
+        return view('admin.manufacturers.create');
     }
 
     /**
@@ -38,7 +44,21 @@ class ManufacturerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Authorizes admin roles.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        // Create a new diet.
+        Manufacturer::create([
+            'uuid' => Str::uuid(),
+            'name' => $request->name,
+            'address' => $request->address,
+            'email' => $request->email,
+            'phone_number' => $request->name
+        ]);
+
+        // Shows the form for creating a new animals (with success alert).
+        return to_route('admin.manufacturers.index')->with('success', 'Diet created successfully');
     }
 
     /**
@@ -81,8 +101,26 @@ class ManufacturerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Manufacturer $manufacturer)
     {
-        //
+        // Authorizes admin roles.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        // Deletes the manufacturer.
+        $new_manufacturer = Manufacturer::where('id', '!=', $manufacturer->id)->first();
+        if ($new_manufacturer) {
+            $products = $manufacturer->products;
+            foreach ($products as $product) {
+                $product->manufacturer_id = $new_manufacturer->id;
+                $product->save();
+            };
+            $manufacturer->delete();
+            // Returns to the page with the manufacturers (without the deleted note).
+            return to_route('admin.manufacturers.index')->with('success', 'Hospital deleted successfully');
+        } else {
+            // Returns to the page with the manufacturers (without the deleted note).
+            return to_route('admin.manufacturers.index')->with('failure', 'This manufacturer can not be deleted!');
+        }
     }
 }
