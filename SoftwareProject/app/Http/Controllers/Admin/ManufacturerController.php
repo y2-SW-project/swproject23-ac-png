@@ -44,9 +44,22 @@ class ManufacturerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($uuid)
     {
-        //
+        // Authorizes admin role.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        // If the id of the admin does not match the note's admin_id, returns a error screen.
+        if (!Auth::id()) {
+            return abort(403);
+        }
+
+        // Finds an manufacturer by uuid.
+        $manufacturer = Manufacturer::where('uuid', $uuid)->firstOrFail();
+
+        // Returns to the page with all the manufacturers.
+        return view('admin.manufacturers.show')->with('manufacturer', $manufacturer);
     }
 
     /**

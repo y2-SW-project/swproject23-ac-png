@@ -4,7 +4,7 @@
 
     <div class="container-fluid px-5">
         <h1 class="text-center">Diets</h1>
-        <a href="#" class="btn btn btn-success my-3">Add Diet</a>
+        <a href="{{ route('admin.diets.create') }}" class="btn btn btn-success my-3">Add Diet</a>
         <div class="row">
             @forelse ($diets as $diet)
                 <div class="card my-2">

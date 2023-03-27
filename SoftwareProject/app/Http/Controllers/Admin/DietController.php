@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Diet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class DietController extends Controller
 {
@@ -30,7 +31,12 @@ class DietController extends Controller
      */
     public function create()
     {
-        //
+        // Authorizes admin role.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        // Returns to the page with all the diets.
+        return view('admin.diets.create');
     }
 
     /**
@@ -38,15 +44,46 @@ class DietController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Authorizes admin roles.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        // Validates if the request is valid.
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required|max:1000'
+        ]);
+
+        // Create a new diet.
+        Diet::create([
+            'uuid' => Str::uuid(),
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
+
+        // Shows the form for creating a new animals (with success alert).
+        return to_route('admin.diets.index')->with('success', 'Diet created successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($uuid)
     {
-        //
+        // Authorizes admin role.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        // If the id of the admin does not match the note's admin_id, returns a error screen.
+        if (!Auth::id()) {
+            return abort(403);
+        }
+
+        // Finds an diet by uuid.
+        $diet = Diet::where('uuid', $uuid)->firstOrFail();
+
+        // Returns to the page with all the diets.
+        return view('admin.diets.show')->with('diet', $diet);
     }
 
     /**
