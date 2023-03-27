@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 namespace App\Http\Controllers;
 
+use App\Models\Diet;
+
 use Illuminate\Http\Request;
 
 class DietController extends Controller
@@ -13,7 +15,15 @@ class DietController extends Controller
      */
     public function index()
     {
-        //
+        // Authorizes admin role.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        $diets = Diet::latest('updated_at')->paginate(5);
+        // dd($diets);
+
+        // Returns to the page with all the diets.
+        return view('admin.diets.index')->with('diets', $diets);
     }
 
     /**
