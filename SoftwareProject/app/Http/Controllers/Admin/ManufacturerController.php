@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
+use App\Models\Manufacturer;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ManufacturerController extends Controller
@@ -13,7 +14,15 @@ class ManufacturerController extends Controller
      */
     public function index()
     {
-        //
+        // Authorizes admin role.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        $manufacturers = Manufacturer::latest('updated_at')->paginate(5);
+        // dd($manufacturers);
+
+        // Returns to the page with all the manufacturers.
+        return view('admin.manufacturers.index')->with('manufacturers', $manufacturers);
     }
 
     /**

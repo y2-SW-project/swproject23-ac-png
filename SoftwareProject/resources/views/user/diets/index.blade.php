@@ -14,7 +14,7 @@
                     </div>
                 </div>
             @empty
-                <p>You have no products</p>
+                <p>You have no diets</p>
             @endforelse
     </div>
 

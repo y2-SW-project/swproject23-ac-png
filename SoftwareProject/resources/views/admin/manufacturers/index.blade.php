@@ -4,6 +4,8 @@
 
     <div class="container-fluid px-5">
         <h1 class="text-center">Manufacturers</h1>
+        <a href="#" class="btn btn btn-success my-3">Add Manufacturer</a>
+        <div class="row">
             @forelse ($manufacturers as $manufacturer)
                 <div class="card my-2">
                     <div class="card-body">
@@ -13,8 +15,9 @@
                     </div>
                 </div>
             @empty
-                <p>You have no products</p>
+                <p>You have no manufacturers</p>
             @endforelse
+        </div>
     </div>
 
 @endsection

@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\Manufacturer;
-use App\Models\Diet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
