@@ -11,6 +11,12 @@
                 </div>
                 <div class="col-8">
                     <h1>{{ $product->name }}</h1>
+                    <div class="my-3">
+                        @foreach ($product->diets as $diet)
+                            <a href="#" class="btn btn-outline-info">{{$diet->name}}</a>
+                        @endforeach
+                    </div>
+                    <p><a class="text-decoration-none" href="#">{{ $product->manufacturer->name }}</a></p>
                     <p>€{{ $product->price }}</p>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
