@@ -33,6 +33,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home.index') }}">{{ __('Products') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home.diet.index') }}">{{ __('Diets') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home.manufacturer.index') }}">{{ __('Manufacturers') }}</a>
+                            </li>
                         </ul>
                     </ul>
 

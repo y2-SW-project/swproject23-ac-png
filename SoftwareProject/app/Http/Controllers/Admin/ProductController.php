@@ -32,14 +32,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // Authorizes admin roles.
-        $admin = Auth::user();
-        $admin->authorizeRoles('admin');
-
-        $manufacturers = Manufacturer::all();
-        $diets = Diet::all();
-
-        return view('admin.products.create')->with('manufacturers', $manufacturers)->with('diets', $diets);
+        //
     }
 
     /**
@@ -76,12 +69,7 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        // Authorizes admin roles.
-        $admin = Auth::user();
-        $admin->authorizeRoles('admin');
-
-        // Shows the form for creating a new products (with the manufactuers and veterinarians).
-        return view('admin.products.edit');
+        //
     }
 
     /**

@@ -36,4 +36,44 @@ class HomeController extends Controller
         }
         return redirect()->route($home);
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function manufacturerIndex()
+    {
+        // Sets the user's home directory.
+        $user = Auth::user();
+        $home = 'home';
+
+        // Redirect to the user's (based on their role) home page.
+        if ($user->hasRole('admin')) {
+            $home = 'admin.manufacturers.index';
+        } else if ($user->hasRole('user')) {
+            $home = 'user.manufacturers.index';
+        }
+        return redirect()->route($home);
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function dietIndex()
+    {
+        // Sets the user's home directory.
+        $user = Auth::user();
+        $home = 'home';
+
+        // Redirect to the user's (based on their role) home page.
+        if ($user->hasRole('admin')) {
+            $home = 'admin.diets.index';
+        } else if ($user->hasRole('user')) {
+            $home = 'user.diets.index';
+        }
+        return redirect()->route($home);
+    }
 }
