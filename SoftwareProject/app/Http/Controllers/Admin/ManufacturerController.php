@@ -85,19 +85,40 @@ class ManufacturerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Manufacturer $manufacturer)
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        // dd($manufacturer->manufacturer->id);
+
+        // Getting the manufacturers.
+        $manufacturer = Manufacturer::all();
+
+        // return view('admin.manufacturers.edit')->with('manufacturer', $manufacturer);
+        return view('admin.manufacturers.edit')->with('manufacturer', $manufacturer);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Manufacturer $manufacturer)
     {
-        //
-    }
+        // Authorizes admin roles.
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
 
+        // Updates the manufacturer's information.
+        $manufacturer->update([
+            'name' => $request->name,
+            'address' => $request->address,
+            'address' => $request->email,
+            'address' => $request->phone_number
+        ]);
+
+        // Returns to the single manufacturer page (with the updated data).
+        return to_route('admin.manufacturers.show', $manufacturer->uuid)->with('success', 'Manufacturer updated successfully');
+    }
     /**
      * Remove the specified resource from storage.
      */
