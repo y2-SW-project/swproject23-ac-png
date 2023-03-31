@@ -11,6 +11,7 @@
             <p>{{ $manufacturer->email }}</p>
             <p>{{ $manufacturer->phone_number }}</p>
         </div>
+        </div>
     </div>
 
 @endsection

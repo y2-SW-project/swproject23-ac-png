@@ -15,21 +15,24 @@
                 autocomplete="off"
                 :value="@old('name')"></input>
 
-            <input
-                type="text"
-                name="price"
-                field="price"
-                placeholder="Price"
-                class="form-control mb-3"
-                :value="@old('price')"></input>
+            <div class="input-group mb-3">
+                <span class="input-group-text">€</span>
+                <input
+                    type="text"
+                    name="price"
+                    field="price"
+                    placeholder="Price"
+                    class="form-control"
+                    :value="@old('price')"></input>
+            </div>
                 
             <div class="form-control mb-3">
                 <label for="manufacturer">Manufacturer: </label><br>
                 <select class="form-select mt-2" name="manufacturer_id">
                     @foreach ($manufacturers as $manufacturer)
-                    <option value="{{$manufacturer->id}}" {{(old('manufacturer_id') == $manufacturer->id) ? "selected" : ""}}>
-                        {{$manufacturer->name}}
-                    </option>
+                        <option value="{{$manufacturer->id}}" {{(old('manufacturer_id') == $manufacturer->id) ? "selected" : ""}}>
+                            {{$manufacturer->name}}
+                        </option>
                     @endforeach
                 </select>
             </div>

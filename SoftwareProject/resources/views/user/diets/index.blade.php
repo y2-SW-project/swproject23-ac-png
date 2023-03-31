@@ -4,6 +4,7 @@
 
     <div class="container-fluid px-5">
         <h1 class="text-center">Diets</h1>
+        <div class="row">
             @forelse ($diets as $diet)
                 <div class="card my-2">
                     <div class="card-body">
@@ -16,6 +17,7 @@
             @empty
                 <p>You have no diets</p>
             @endforelse
+        </div>
     </div>
 
 @endsection

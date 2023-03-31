@@ -14,7 +14,6 @@ class ProductController extends Controller
      */
     public function index()
     {
-
         $products = Product::latest('updated_at')->paginate(12);
         // dd($products);
 
@@ -26,7 +25,8 @@ class ProductController extends Controller
      */
     public function show($uuid)
     {
-        // If the id of the admin does not match the note's admin_id, returns a error screen.
+
+        // If the id of the user does not match the note's user_id, returns a error screen.
         if (!Auth::id()) {
             return abort(403);
         }

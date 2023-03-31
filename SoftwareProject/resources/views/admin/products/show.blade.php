@@ -19,7 +19,7 @@
                     <h1>{{ $product->name }}</h1>
                     <div class="my-3">
                         @foreach ($product->diets as $diet)
-                            <a href="#" class="btn btn-outline-info">{{$diet->name}}</a>
+                            <a href="{{ route('admin.diets.show', $diet->uuid) }}" class="btn btn-outline-info">{{$diet->name}}</a>
                         @endforeach
                     </div>
                     <p><a class="text-decoration-none" href="#">{{ $product->manufacturer->name }}</a></p>
