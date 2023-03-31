@@ -3,8 +3,14 @@
 @section('content')
 
     <div class="container-fluid px-5">
-        <a href="#" class="btn btn-primary my-3">Edit Product</a>
-        <a href="#" class="btn btn btn-danger my-3">Move to Trash</a>
+        <div class="d-flex">
+            <a href="{{ route('admin.products.edit', $product) }}" class="me-3 btn btn-primary my-3">Edit Product</a>
+            <form action="{{ route('admin.products.destroy', $product) }}" method="post">
+                @method('delete')
+                @csrf
+                <button type="submit" class="btn btn btn-danger my-3" onclick="return confirm('Are you sure you wish to move this to trash?')">Move to Trash</button>
+            </form>
+        </div>
         <div class="p-5 border rounded">
             <div class="row">
                 <div class="col-4">

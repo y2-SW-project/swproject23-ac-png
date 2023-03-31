@@ -10,7 +10,7 @@
                 <div class="card my-2">
                     <div class="card-body">
                         <h5>
-                            <a href="{{ route('user.diets.show', $diet->uuid) }}" class="fs-3 text-decoration-none">{{ $diet->name }}</a>
+                            <a href="{{ route('admin.diets.show', $diet->uuid) }}" class="fs-3 text-decoration-none">{{ $diet->name }}</a>
                         </h5>
                         <p class="card-text">{{ Str::limit($diet->description, 250) }}</p>
                     </div>

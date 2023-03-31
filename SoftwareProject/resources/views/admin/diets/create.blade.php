@@ -4,7 +4,7 @@
 
     <div class="container-fluid px-5">
         <h1 class="text-center">Create New Diet</h1>
-        <form action="{{ route('admin.diets.store') }}" method="post">
+        <form class="mt-4" action="{{ route('admin.diets.store') }}" method="post">
             @csrf
             <div class="mb-3">
                 <input

@@ -4,7 +4,7 @@
 
     <div class="container-fluid px-5">
         <h1 class="text-center">Edit Existing Manufacturer</h1>
-        <form action="{{ route('admin.manufacturers.update', $manufacturer) }}" method="post">
+        <form class="mt-4" action="{{ route('admin.manufacturers.update', $manufacturer) }}" method="post">
             @method('put')
             @csrf
             <div class="mb-3">

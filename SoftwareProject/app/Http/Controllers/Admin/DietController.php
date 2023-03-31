@@ -99,8 +99,16 @@ class DietController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Diet $diet)
     {
-        //
+        // Authorizes admin role.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        // Deletes the diet.
+        $diet->delete();
+
+        // Returns to the page with the diets (without the deleted note).
+        return to_route('admin.diets.index')->with('success', 'Diet deleted successfully');
     }
 }

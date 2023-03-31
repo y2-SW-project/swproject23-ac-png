@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Manufacturer;
+use App\Models\Diet;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -30,7 +33,20 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        // Authorizes admin roles.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+
+        // Gets all the Manufacturers.
+        $manufacturers = Manufacturer::all();
+        // Gets all the Diets.
+        $diets = Diet::all();
+
+        // Shows the form for creating a new products (with the manufacturers and diets).
+        return view('admin.products.create')->with('manufacturers', $manufacturers)->with('diets', $diets);
+
+        return view('admin.products.create');
     }
 
     /**
@@ -38,7 +54,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Authorizes admin roles.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        // Creates a new product.
+        $product = Product::create([
+            'uuid' => Str::uuid(),
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'manufacturer_id' => $request->manufacturer_id
+        ]);
+
+        $product->diets()->attach($request->diets);
+
+        // Shows the page for all the products.
+        return to_route('admin.products.index');
     }
 
     /**
@@ -81,8 +113,16 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
-        //
+        // Authorizes admin role.
+        $admin = Auth::user();
+        $admin->authorizeRoles('admin');
+
+        // Deletes the product.
+        $product->delete();
+
+        // Returns to the page with the pro$products (without the deleted note).
+        return to_route('admin.products.index')->with('success', 'Product deleted successfully');
     }
 }
