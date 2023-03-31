@@ -18,7 +18,6 @@
             <h2>Description</h2>
             <p>{{ $diet->description }}</p>
         </div>
-        </div>
     </div>
 
 @endsection

@@ -18,6 +18,9 @@
             @empty
                 <p>You have no diets</p>
             @endforelse
+            <div class="mt-3">
+                {{ $diets->links('pagination::bootstrap-4') }}
+            </div>
         </div>
     </div>
 

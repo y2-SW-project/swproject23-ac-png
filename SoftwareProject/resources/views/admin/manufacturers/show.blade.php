@@ -19,6 +19,29 @@
             <p>{{ $manufacturer->email }}</p>
             <p>{{ $manufacturer->phone_number }}</p>
         </div>
+        <h3 class="mt-3">Products from {{ $manufacturer->name }}</h3>
+        <div class="row">
+            @forelse ($products as $product)
+            <div class="col-3 card my-2" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ route('admin.products.show', $product->uuid) }}" class="fs-3 text-decoration-none">{{ $product->name }}</a>
+                            </h5>
+                            <p class="card-text">{{ Str::limit($product->description, 50) }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @empty
+        </div>
+            <p>You have no products</p>
+        @endforelse
+        <div class="mt-1">
+            {{ $products->links('pagination::bootstrap-4') }}
         </div>
     </div>
 

@@ -76,6 +76,7 @@
                                 </div>
                             </li>
                         @endguest
+                        <a class="nav-link" href="#">{{ __('Basket') }}</a>
                     </ul>
                 </div>
             </div>

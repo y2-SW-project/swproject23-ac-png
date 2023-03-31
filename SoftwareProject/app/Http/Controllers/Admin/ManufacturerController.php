@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Manufacturer;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -78,8 +79,10 @@ class ManufacturerController extends Controller
         // Finds an manufacturer by uuid.
         $manufacturer = Manufacturer::where('uuid', $uuid)->firstOrFail();
 
+        $products = Product::where('manufacturer_id', $uuid)->paginate(4);
+
         // Returns to the page with all the manufacturers.
-        return view('admin.manufacturers.show')->with('manufacturer', $manufacturer);
+        return view('admin.manufacturers.show')->with('manufacturer', $manufacturer)->with('products', $products);
     }
 
     /**

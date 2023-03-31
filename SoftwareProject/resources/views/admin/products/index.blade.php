@@ -13,7 +13,7 @@
                         <h5>
                             <a href="{{ route('admin.products.show', $product->uuid) }}" class="fs-3 text-decoration-none">{{ $product->name }}</a>
                         </h5>
-                        <a href="#" class="card-link text-decoration-none">{{ $product->manufacturer->name }}</a>
+                        <a href="{{ route('admin.manufacturers.show', $product->manufacturer->uuid) }}" class="card-link text-decoration-none">{{ $product->manufacturer->name }}</a>
                         <p class="card-text">{{ Str::limit($product->description, 100) }}</p>
                     </div>
                 </div>
@@ -21,6 +21,9 @@
             @empty
                 <p>You have no products</p>
             @endforelse
+            <div class="mt-3">
+                {{ $products->links('pagination::bootstrap-4') }}
+            </div>
         </div>
     </div>
 

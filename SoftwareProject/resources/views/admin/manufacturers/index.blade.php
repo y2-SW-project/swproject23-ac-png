@@ -17,6 +17,9 @@
             @empty
                 <p>You have no manufacturers</p>
             @endforelse
+            <div class="mt-3">
+                {{ $manufacturers->links('pagination::bootstrap-4') }}
+            </div>
         </div>
     </div>
 
