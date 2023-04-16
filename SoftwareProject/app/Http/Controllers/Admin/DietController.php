@@ -114,6 +114,7 @@ class DietController extends Controller
         $admin->authorizeRoles('admin');
 
         // Deletes the diet.
+        $diet->products()->detach();
         $diet->delete();
 
         // Returns to the page with the diets (without the deleted note).

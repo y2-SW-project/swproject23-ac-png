@@ -8,6 +8,7 @@
             @method('put')
             @csrf
             <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
                 <input
                 type="text"
                 name="name"
@@ -15,19 +16,13 @@
                 placeholder="Name"
                 class="form-control"
                 autocomplete="off"
-                :value="@old('name', $diet->name)"></input>
+                value="<?php if (isset($diet["name"])) echo $diet["name"]; ?>"></input>
             </div>
             <div class="mb-3">
-                <input
-                type="text"
-                name="description"
-                field="description"
-                placeholder="Description"
-                class="form-control"
-                autocomplete="off"
-                :value="@old('description', $diet->description)"></input>
+                <label for="description" class="form-label">Description</label>
+                <textarea name="description" id="description" rows="5" class="form-control"><?php if (isset($diet["description"])) echo $diet["description"]; ?></textarea>
             </div>
-            <button class="btn btn-success">Create Diet</button>
+            <button class="btn btn-success">Update Diet</button>
         </form>
     </div>
 

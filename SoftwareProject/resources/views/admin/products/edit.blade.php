@@ -3,29 +3,38 @@
 @section('content')
 
     <div class="container-fluid px-5">
-        <h1 class="text-center">Create New Product</h1>
+        <h1 class="text-center">Edit Existing Product</h1>
         <form class="mt-4" action="{{ route('admin.products.update', $product) }}" method="post">
+            @method('put')
             @csrf
-            <input
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input
                 type="text"
                 name="name"
                 field="name"
                 placeholder="Name"
-                class="form-control mb-3"
+                class="form-control"
                 autocomplete="off"
-                :value="@old('name')"></input>
-
-            <div class="input-group mb-3">
-                <span class="input-group-text">€</span>
-                <input
-                    type="text"
-                    name="price"
-                    field="price"
-                    placeholder="Price"
-                    class="form-control"
-                    :value="@old('price')"></input>
+                value="<?php if (isset($product["name"])) echo $product["name"]; ?>"></input>
             </div>
-                
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="description" id="description" rows="6" class="form-control"><?php if (isset($product["description"])) echo $product["description"]; ?></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">€</span>
+                    <input
+                        type="text"
+                        name="price"
+                        field="price"
+                        placeholder="Price"
+                        class="form-control"
+                        value="<?php if (isset($product["price"])) echo $product["price"]; ?>"></input>
+                </div>
+            </div>
             <div class="form-control mb-3">
                 <label for="manufacturer">Manufacturer: </label><br>
                 <select class="form-select mt-2" name="manufacturer_id">
@@ -36,7 +45,6 @@
                     @endforeach
                 </select>
             </div>
-            
             <div class="form-control mb-3">
                 <label for="diets">Diet:</label><br>
                 <div class="mt-2">
@@ -49,16 +57,7 @@
                     @endforeach
                 </div>
             </div>
-            
-            <textarea
-                name="description"
-                rows="3"
-                field="description"
-                placeholder="Description"
-                class="form-control mb-3"
-                :value="@old('description')"></textarea>
-
-            <button class="btn btn-success">Save Animal</button>
+            <button class="btn btn-success">Updatess Product</button>
         </form>
     </div>
 

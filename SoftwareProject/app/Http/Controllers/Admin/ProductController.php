@@ -134,6 +134,7 @@ class ProductController extends Controller
         $admin->authorizeRoles('admin');
 
         // Deletes the product.
+        $product->diets()->detach();
         $product->delete();
 
         // Returns to the page with the pro$products (without the deleted note).

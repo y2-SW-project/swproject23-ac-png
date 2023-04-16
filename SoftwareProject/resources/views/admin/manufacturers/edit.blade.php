@@ -8,6 +8,7 @@
             @method('put')
             @csrf
             <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
                 <input
                 type="text"
                 name="name"
@@ -15,9 +16,10 @@
                 placeholder="Name"
                 class="form-control"
                 autocomplete="off"
-                :value="@old('name', $manufacturer->name)"></input>
+                value="<?php if (isset($manufacturer["name"])) echo $manufacturer["name"]; ?>"></input>
             </div>
             <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
                 <input
                 type="text"
                 name="address"
@@ -25,9 +27,10 @@
                 placeholder="Address"
                 class="form-control"
                 autocomplete="off"
-                :value="@old('address', $manufacturer->address)"></input>
+                value="<?php if (isset($manufacturer["address"])) echo $manufacturer["address"]; ?>"></input>
             </div>
             <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
                 <input
                 type="email"
                 name="email"
@@ -35,9 +38,10 @@
                 placeholder="Email"
                 class="form-control"
                 autocomplete="off"
-                :value="@old('email', $manufacturer->email)"></input>
+                value="<?php if (isset($manufacturer["email"])) echo $manufacturer["email"]; ?>"></input>
             </div>
             <div class="mb-3">
+                <label for="phone_number" class="form-label">Phone Number</label>
                 <input
                 type="text"
                 name="phone_number"
@@ -45,9 +49,9 @@
                 placeholder="Phone Number"
                 class="form-control"
                 autocomplete="off"
-                :value="@old('phone_number', $manufacturer->phone_number)"></input>
+                value="<?php if (isset($manufacturer["phone_number"])) echo $manufacturer["phone_number"]; ?>"></input>
             </div>
-            <button class="btn btn-success">Save Manufacturer</button>
+            <button class="btn btn-success">Update Manufacturer</button>
         </form>
     </div>
 
