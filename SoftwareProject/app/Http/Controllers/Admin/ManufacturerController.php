@@ -95,8 +95,7 @@ class ManufacturerController extends Controller
 
         // dd($manufacturer->manufacturer->id);
 
-        // Getting the manufacturers.
-        $manufacturer = Manufacturer::all();
+        // $manufacturers = Manufacturer::all();
 
         // return view('admin.manufacturers.edit')->with('manufacturer', $manufacturer);
         return view('admin.manufacturers.edit')->with('manufacturer', $manufacturer);
@@ -140,10 +139,10 @@ class ManufacturerController extends Controller
                 $product->save();
             };
             $manufacturer->delete();
-            // Returns to the page with the manufacturers (without the deleted note).
+            // Returns to the page with the manufacturers (without the deleted product).
             return to_route('admin.manufacturers.index')->with('success', 'Hospital deleted successfully');
         } else {
-            // Returns to the page with the manufacturers (without the deleted note).
+            // Returns to the page with the manufacturers (without the deleted product).
             return to_route('admin.manufacturers.index')->with('failure', 'This manufacturer can not be deleted!');
         }
     }

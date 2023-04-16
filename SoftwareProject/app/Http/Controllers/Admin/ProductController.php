@@ -97,11 +97,25 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        //
-    }
+        // Authorizes admin role.
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
 
+        // dd($product->hospital->id);
+
+        // Getting the manufacturers and diets.
+        $manufacturers = Manufacturer::all();
+        $diets = Diet::all();
+
+        // return view('admin.products.edit')->with('product', $product);
+        return view('admin.products.edit', [
+            'product' => $product,
+            'manufacturers' => $manufacturers,
+            'diets' => $diets
+        ]);
+    }
     /**
      * Update the specified resource in storage.
      */

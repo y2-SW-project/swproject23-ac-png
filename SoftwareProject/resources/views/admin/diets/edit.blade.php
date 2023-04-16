@@ -1,0 +1,34 @@
+@extends('layouts.app')
+
+@section('content')
+
+    <div class="container-fluid px-5">
+        <h1 class="text-center">Edit Diet</h1>
+        <form class="mt-4" action="{{ route('admin.diets.update', $diet) }}" method="post">
+            @method('put')
+            @csrf
+            <div class="mb-3">
+                <input
+                type="text"
+                name="name"
+                field="name"
+                placeholder="Name"
+                class="form-control"
+                autocomplete="off"
+                :value="@old('name', $diet->name)"></input>
+            </div>
+            <div class="mb-3">
+                <input
+                type="text"
+                name="description"
+                field="description"
+                placeholder="Description"
+                class="form-control"
+                autocomplete="off"
+                :value="@old('description', $diet->description)"></input>
+            </div>
+            <button class="btn btn-success">Create Diet</button>
+        </form>
+    </div>
+
+@endsection

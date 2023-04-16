@@ -83,9 +83,17 @@ class DietController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Diet $diet)
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        // dd($diet->name);
+
+        // $diets = Diet::all();
+
+        // return view('admin.diets.edit')->with('diet', $diet);
+        return view('admin.diets.edit')->with('diet', $diet);
     }
 
     /**

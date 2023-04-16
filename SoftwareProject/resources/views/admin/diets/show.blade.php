@@ -4,7 +4,7 @@
 
     <div class="container-fluid px-5">
         <div class="d-flex">
-            <a href="{{ route('admin.diets.edit', $diet) }}" class="me-3 btn btn-primary my-3">Edit Product</a>
+            <a href="{{ route('admin.diets.edit', $diet) }}" class="me-3 btn btn-primary my-3">Edit Diet</a>
             <form action="{{ route('admin.diets.destroy', $diet) }}" method="post">
                 @method('delete')
                 @csrf
