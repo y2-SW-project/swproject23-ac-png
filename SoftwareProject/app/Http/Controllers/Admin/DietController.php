@@ -55,7 +55,7 @@ class DietController extends Controller
             'description' => $request->description
         ]);
 
-        // Shows the form for creating a new animals (with success alert).
+        // Shows the form for creating a new diets (with success alert).
         return to_route('admin.diets.index')->with('success', 'Diet created successfully');
     }
 
@@ -99,9 +99,20 @@ class DietController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Diet $diet)
     {
-        //
+        // Authorizes admin role.
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        // Updates the diet's information.
+        $diet->update([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
+
+        // Returns to the single diet page (with the updated data).
+        return to_route('admin.diets.show', $diet->uuid)->with('success', 'Diet updated successfully');
     }
 
     /**

@@ -13,8 +13,7 @@
                         <h5>
                             <a href="{{ route('admin.products.show', $product->uuid) }}" class="fs-3 text-decoration-none">{{ $product->name }}</a>
                         </h5>
-                        <a href="{{ route('admin.manufacturers.show', $product->manufacturer->uuid) }}" class="card-link text-decoration-none">{{ $product->manufacturer->name }}</a>
-                        <p class="card-text">{{ Str::limit($product->description, 100) }}</p>
+                        <h5><span class="badge text-bg-warning">€{{ $product->price }}</span></h5>
                     </div>
                 </div>
             </div>

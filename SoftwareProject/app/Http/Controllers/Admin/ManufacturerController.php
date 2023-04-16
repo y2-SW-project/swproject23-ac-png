@@ -93,11 +93,6 @@ class ManufacturerController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        // dd($manufacturer->manufacturer->id);
-
-        // $manufacturers = Manufacturer::all();
-
-        // return view('admin.manufacturers.edit')->with('manufacturer', $manufacturer);
         return view('admin.manufacturers.edit')->with('manufacturer', $manufacturer);
     }
 

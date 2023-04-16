@@ -12,7 +12,11 @@ class BasketController extends Controller
      */
     public function index()
     {
-        //
+        // $baskets = Basket::latest('updated_at')->paginate(12);
+        // dd($baskets);
+
+        // Returns to the page with all the baskets.
+        return view('user.baskets.index');
     }
 
     /**
@@ -20,7 +24,7 @@ class BasketController extends Controller
      */
     public function create()
     {
-        //
+        //§
     }
 
     /**

@@ -119,9 +119,22 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        // Authorizes admin role.
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        // Updates the product's information.
+        $product->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'manufacturer_id' => $request->manufacturer_id
+        ]);
+
+        // Returns to the single product page (with the updated data).
+        return to_route('admin.products.show', $product->uuid)->with('success', 'Diet updated successfully');
     }
 
     /**
