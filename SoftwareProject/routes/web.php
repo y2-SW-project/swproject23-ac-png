@@ -3,6 +3,9 @@
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\User\ProductController as UserProductController;
 
+use App\Http\Controllers\Admin\BasketController as AdminBasketController;
+use App\Http\Controllers\User\BasketController as UserBasketController;
+
 use App\Http\Controllers\Admin\ManufacturerController as AdminManufacturerController;
 use App\Http\Controllers\User\ManufacturerController as UserManufacturerController;
 
@@ -32,12 +35,16 @@ Route::get('/dashboard', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 Route::get('/home/manufacturers', [App\Http\Controllers\HomeController::class, 'manufacturerIndex'])->name('home.manufacturer.index');
+Route::get('/home/baskets', [App\Http\Controllers\HomeController::class, 'basketIndex'])->name('home.basket.index');
 Route::get('/home/diets', [App\Http\Controllers\HomeController::class, 'dietIndex'])->name('home.diet.index');
 
 Auth::routes();
 
 Route::resource('/admin/products', AdminProductController::class)->middleware(['auth'])->names('admin.products');
 Route::resource('/user/products', UserProductController::class)->middleware(['auth'])->names('user.products')->only(['index', 'show']);
+
+Route::resource('/admin/baskets', AdminBasketController::class)->middleware(['auth'])->names('admin.baskets');
+Route::resource('/user/baskets', UserBasketController::class)->middleware(['auth'])->names('user.baskets');
 
 Route::resource('/admin/manufacturers', AdminManufacturerController::class)->middleware(['auth'])->names('admin.manufacturers');
 Route::resource('/user/manufacturers', UserManufacturerController::class)->middleware(['auth'])->names('user.manufacturers')->only(['index', 'show']);

@@ -76,7 +76,7 @@
                                 </div>
                             </li>
                         @endguest
-                        <a class="nav-link" href="#">{{ __('Basket') }}</a>
+                        <a class="nav-link" href="{{ route('home.basket.index') }}">{{ __('Basket') }}</a>
                     </ul>
                 </div>
             </div>

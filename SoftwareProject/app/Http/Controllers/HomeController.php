@@ -76,4 +76,19 @@ class HomeController extends Controller
         }
         return redirect()->route($home);
     }
+
+    public function basketIndex()
+    {
+        // Sets the user's home directory.
+        $user = Auth::user();
+        $home = 'home';
+
+        // Redirect to the user's (based on their role) home page.
+        if ($user->hasRole('admin')) {
+            $home = 'admin.baskets.index';
+        } else if ($user->hasRole('user')) {
+            $home = 'user.baskets.index';
+        }
+        return redirect()->route($home);
+    }
 }
