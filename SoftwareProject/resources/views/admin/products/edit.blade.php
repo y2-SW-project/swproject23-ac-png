@@ -39,9 +39,15 @@
                 <label for="manufacturer">Manufacturer: </label><br>
                 <select class="form-select mt-2" name="manufacturer_id">
                     @foreach ($manufacturers as $manufacturer)
-                        <option value="{{$manufacturer->id}}" {{(old('manufacturer_id') == $manufacturer->id) ? "selected" : ""}}>
+                        @if($manufacturer->id == $product->manufacturer->id)
+                        <option value="{{$manufacturer->id}}" selected>
                             {{$manufacturer->name}}
                         </option>
+                        @else
+                        <option value="{{$manufacturer->id}}">
+                            {{$manufacturer->name}}
+                        </option>
+                        @endif
                     @endforeach
                 </select>
             </div>
