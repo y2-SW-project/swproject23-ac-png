@@ -10,6 +10,7 @@
             <div class="col-3">
                 <div class="card my-2">
                     <div class="card-body">
+                        <img class="card-img-top mb-2" src="{{asset('storage/images/' . $product->image) }}"/>
                         <h5>
                             <a href="{{ route('admin.products.show', $product->uuid) }}" class="fs-3 text-decoration-none">{{ $product->name }}</a>
                         </h5>

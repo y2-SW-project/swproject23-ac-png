@@ -14,6 +14,7 @@
         <div class="p-5 border rounded">
             <div class="row">
                 <div class="col-4">
+                    <img src="{{asset('storage/images/' . $product->image) }}" width="350" height="250"/>
                 </div>
                 <div class="col-8">
                     <h1>{{ $product->name }}</h1>

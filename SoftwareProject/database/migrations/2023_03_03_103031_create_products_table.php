@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->string('name');
+            $table->string('image');
             $table->text('description');
             $table->float('price');
             $table->timestamps();
