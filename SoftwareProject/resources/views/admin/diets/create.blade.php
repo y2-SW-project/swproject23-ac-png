@@ -16,15 +16,15 @@
                 autocomplete="off"
                 :value="@old('name')"></input>
             </div>
+            
             <div class="mb-3">
-                <input
-                type="text"
+                <textarea
                 name="description"
+                rows="3"
                 field="description"
                 placeholder="Description"
-                class="form-control"
-                autocomplete="off"
-                :value="@old('description')"></input>
+                class="form-control mb-3"
+                :value="@old('description')"></textarea>
             </div>
             <button class="btn btn-success">Create Diet</button>
         </form>

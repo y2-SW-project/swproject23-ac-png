@@ -21,7 +21,7 @@
             @empty
                 <p>You have no products</p>
             @endforelse
-            <div class="mt-3">
+            <div class="mt-3 d-flex justify-content-end">
                 {{ $products->links('pagination::bootstrap-4') }}
             </div>
         </div>

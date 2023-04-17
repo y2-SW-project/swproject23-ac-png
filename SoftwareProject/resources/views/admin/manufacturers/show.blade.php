@@ -16,7 +16,7 @@
                 <h1>{{ $manufacturer->name }}</h1>
             </div>
             <p>{{ $manufacturer->address }}</p>
-            <p>{{ $manufacturer->email }}</p>
+            <p><a class="text-decoration-none" href="mailto:{{ $manufacturer->email }}">{{ $manufacturer->email }}</a></p>
             <p>{{ $manufacturer->phone_number }}</p>
         </div>
     </div>

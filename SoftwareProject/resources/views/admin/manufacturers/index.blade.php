@@ -17,7 +17,7 @@
             @empty
                 <p>You have no manufacturers</p>
             @endforelse
-            <div class="mt-3">
+            <div class="mt-3 d-flex justify-content-end">
                 {{ $manufacturers->links('pagination::bootstrap-4') }}
             </div>
         </div>

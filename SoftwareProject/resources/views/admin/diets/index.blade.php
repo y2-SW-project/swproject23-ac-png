@@ -18,7 +18,7 @@
             @empty
                 <p>You have no diets</p>
             @endforelse
-            <div class="mt-3">
+            <div class="mt-3 d-flex justify-content-end">
                 {{ $diets->links('pagination::bootstrap-4') }}
             </div>
         </div>

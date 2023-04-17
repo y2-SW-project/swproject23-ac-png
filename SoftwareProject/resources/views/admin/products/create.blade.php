@@ -14,6 +14,10 @@
                 class="form-control mb-3"
                 autocomplete="off"
                 :value="@old('name')"></input>
+            
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="inputGroupFile01">
+            </div>
 
             <div class="input-group mb-3">
                 <span class="input-group-text">€</span>
@@ -26,7 +30,7 @@
                     :value="@old('price')"></input>
             </div>
                 
-            <div class="form-control mb-3">
+            <div class="mb-3">
                 <label for="manufacturer">Manufacturer: </label><br>
                 <select class="form-select mt-2" name="manufacturer_id">
                     @foreach ($manufacturers as $manufacturer)
@@ -37,7 +41,7 @@
                 </select>
             </div>
             
-            <div class="form-control mb-3">
+            <div class="mb-3">
                 <label for="diets">Diet:</label><br>
                 <div class="mt-2">
                     @foreach ($diets as $diet)
@@ -52,7 +56,7 @@
             
             <textarea
                 name="description"
-                rows="3"
+                rows="5"
                 field="description"
                 placeholder="Description"
                 class="form-control mb-3"

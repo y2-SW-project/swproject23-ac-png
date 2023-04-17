@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->word(),
             'image' => $this->faker->image('public/storage/images', 400, 300, null, false),
             'description' => $this->faker->text(1000),
-            'price' => $this->faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 100),
+            'price' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 100),
             'created_at' => $this->faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
             'updated_at' => $this->faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now')
         ];
