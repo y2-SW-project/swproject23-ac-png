@@ -64,8 +64,17 @@ class ProductController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'description' => $request->description,
-            'manufacturer_id' => $request->manufacturer_id
+            'manufacturer_id' => $request->manufacturer_id,
+            'image' => 'file|image'
         ]);
+
+        $image = $request->file('image');
+        $extension = $image->getClientOriginalExtension();
+        // the filename needs to be unique, I use name and add the date to guarantee a unique filename, ISBN would be better here.
+        $filename = date('Y-m-d-His') . '_' . $request->input('name') . '.' . $extension;
+
+        // store the file $image in /public/images, and name it $filename
+        $path = $image->storeAs('public/images', $filename);
 
         $product->diets()->attach($request->diets);
 

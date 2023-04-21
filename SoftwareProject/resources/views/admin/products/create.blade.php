@@ -16,7 +16,7 @@
                 :value="@old('name')"></input>
             
             <div class="input-group mb-3">
-                <input type="file" class="form-control" id="inputGroupFile01">
+                <input type="file" name="image" class="form-control" id="inputGroupFile01">
             </div>
 
             <div class="input-group mb-3">
