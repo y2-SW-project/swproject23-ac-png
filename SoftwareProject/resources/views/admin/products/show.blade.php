@@ -23,7 +23,7 @@
                             <a href="{{ route('admin.diets.show', $diet->uuid) }}" class="btn btn-outline-info">{{$diet->name}}</a>
                         @endforeach
                     </div>
-                    <p><a class="text-decoration-none" href="#">{{ $product->manufacturer->name }}</a></p>
+                    <p><a class="text-decoration-none" href="{{ route('user.manufacturers.show', $product->manufacturer->uuid) }}">{{ $product->manufacturer->name }}</a></p>
                     <p>€{{ $product->price }}</p>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
